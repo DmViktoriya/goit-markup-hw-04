@@ -135,32 +135,24 @@ p {
   display: flex;
   margin-left: auto;
 }
-.contact {
-  display: block;
-  padding-top: 32px;
-  padding-bottom: 32px;
-}
+
 .contact-item:not(:last-child) {
   margin-right: 50px;
-}
-.contact::before {
-  content: '';
-  display: inline-block;
-  background-size: contain;
-  align-items: center;
-  margin-right: 10px;
-  padding-top: 32px;
-  padding-bottom: 32px;
 }
 
 /* Контакты-ссылки почта и телефон */
 .contact {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   font-weight: 500;
   font-size: 14px;
   line-height: 1.14;
   letter-spacing: 0.02em;
   color: var(--primary-text-color);
   text-decoration: none;
+  padding-top: 32px;
+  padding-bottom: 32px;
 }
 .envelope,
 .smartphone {
@@ -169,13 +161,14 @@ p {
 }
 .contact:hover,
 .contact:focus,
-.contact:active,
-.envelope:hover,
-.envelope:focus,
-.smartphone:hover,
-.smartphone:focus {
+.contact:active {
   color: var(--accent-color);
-  fill: var(--accent-color);
+}
+.contact:hover .envelope,
+.contact:focus .envelope,
+.contact:hover .smartphone,
+.contact:focus .smartphone {
+  fill: currentColor;
 }
 /* Кнопки */
 .button {
@@ -256,10 +249,6 @@ p {
 }
 
 /* Особенности */
-.feature-title {
-  visibility: hidden;
-  margin: 0;
-}
 .feature-list {
   display: flex;
   text-decoration: none;
@@ -286,6 +275,9 @@ p {
   margin: 0;
 }
 .feature-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background-color: var(--secondary-bg-color);
   width: 270px;
   height: 120px;
@@ -296,8 +288,6 @@ p {
   fill: var(--title-text-color);
   width: 70px;
   height: 70px;
-  margin-left: 100px;
-  margin-top: 25px;
 }
 
 /*Чем мы занимаемся*/
@@ -404,8 +394,9 @@ p {
   align-items: center;
   width: 40px;
   height: 40px;
-  background-color: #ffffff;
+  background-color: var(--button-letters-active);
   border-radius: 50%;
+  fill: var(--button-letters-active);
 }
 .social-icons .icon {
   width: 20px;
@@ -415,12 +406,15 @@ p {
 .social-icons-item:not(:last-child) {
   margin-right: 10px;
 }
-.social-icons .icon:hover,
-.social-icons .icon:focus {
+.social-icons-link:hover .icon,
+.social-icons-link:focus .icon {
   fill: var(--button-letters-active);
 }
 .social-icons-link:hover,
-.social-icons-link:focus,
+.social-icons-link:focus {
+  background-color: var(--accent-color);
+  fill: var(--button-letters-active);
+}
 .footer-social-icons-link:hover,
 .footer-social-icons-link:focus {
   background-color: var(--accent-color);
@@ -433,6 +427,11 @@ p {
   height: 40px;
   background: rgba(255, 255, 255, 0.1);
   border-radius: 50%;
+}
+.footer-icon {
+  width: 20px;
+  height: 20px;
+  fill: var(--button-letters-active);
 }
 
 /*Постоянные клиенты*/
@@ -451,14 +450,10 @@ p {
   text-align: center;
   align-items: center;
 }
-.clients-link,
-.clients-item,
-.clients-box {
+.clients-link {
   display: flex;
   justify-content: center;
   align-items: center;
-}
-.clients-box {
   width: 170px;
   height: 90px;
   border: 1px solid var(--icon-color);
@@ -467,18 +462,15 @@ p {
 }
 .clients-item {
   fill: var(--icon-color);
-  /*display: flex;
-  justify-content: center;
-  text-align: center;
-  align-items: center;*/
 }
 .clients-item:hover,
 .clients-item:focus {
   fill: var(--accent-color);
 }
-.clients-box:hover,
-.clients-box:focus {
+.clients-link:hover,
+.clients-link:focus {
   border: 1px solid var(--accent-color);
+  fill: var(--accent-color);
 }
 .clients-item:not(:last-child) {
   margin-right: 30px;
@@ -486,9 +478,12 @@ p {
 
 /* Портфолио */
 
-.portfolio-title {
-  visibility: hidden;
-  margin: 0;
+.visually-hidden {
+  position: absolute;
+  clip: rect(0 0 0 0);
+  width: 1px;
+  height: 1px;
+  margin: -1px;
 }
 .nav-portfolio {
   display: flex;
